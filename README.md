@@ -1,5 +1,7 @@
 # eleventy-tailwindcss-alpinejs-starter
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/41f60883-4ae6-4920-aeb0-1ee226e2cfbe/deploy-status)](https://app.netlify.com/sites/360now/deploys)
+
 A starter repository showing how to build a website with the [Eleventy](https://www.11ty.dev), [Tailwind CSS](https://tailwindcss.com), and [Alpine.js](https://github.com/alpinejs/alpine).
 
 ## Getting Started
