@@ -1,0 +1,69 @@
+---
+layout: default
+title: 360Now Benefits
+meta_description: Learn about the benefits of 360Now including how to manage leads, submit quotes, and more!
+
+benefits:
+  - title: Senior Market Advisors
+    description: Click here for more information about how we support our agencies and agents
+    url: https://seniormarketadvisors.com
+  - title: Agency Portal
+    description: Your one stop shop to servicing your agency by managing and assigning leads to your agents, submitting quotes, communicating requests with your topline agency, and more!
+    url: https://myinsuranceagencyportal.force.com/
+  - title: Agent Portal
+    description: Nurture your lead assignments, quote and enroll your customers, and more!
+    url: http://myinsuranceagentportal.com/
+  - title: Employee Portal
+    description: Click here for your Salesforce login
+    url: https://healthcareholdingsofamericanextgen.my.salesforce.com/
+
+---
+
+{% block content %}
+  
+{% set hero_title = "360Now Benefits" %}
+{% include "_includes/modules/internal-hero.njk" %}
+  
+  <div class="container w-11/12 md:w-8/12 mx-auto py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 grid-flow-row gap-7">
+      
+      {% for benefit in benefits %}
+      
+        <div class="w-full shadow-lg border-8 border-360darkteal bg-360lightteal transition duration-500 ease-in-out hover:bg-360darkteal">
+          
+    
+          <a href="{{ benefit.url }}" class="">
+
+          
+            <div class="card flex flex-row items-stretch px-6 py-4 text-white text-center">
+              
+              <div class="info w-full text-left pl-4">
+                <h2 class="text-2xl font-bold mb-2">{{ benefit.title }}</h2>
+                <div class="info__lower relative transition-opacity w-full">
+                  <p class="info__text w-full text-base transition h-32">
+                    {{ benefit.description }}
+                  </p>
+                  
+                  {% if benefit.url %}
+                    <div class="w-full absolute top-0 my-6">
+                      <div class="info__icon hidden flex image">
+                        <img src="/img/icon-arrow.png" alt="Go to {{ benefit.title }}" class="w-16 h-16 p-2"/>
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                </div>
+              </div>
+              
+            </div>
+          
+          </a>
+        
+        </div>
+        
+      {% endfor %}
+
+    </div>
+  </div>
+  
+{% endblock %}

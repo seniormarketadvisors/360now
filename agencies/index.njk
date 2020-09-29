@@ -1,0 +1,80 @@
+---
+layout: default
+title: Agencies - How can we serve you?
+meta_description: The 360Now Agent and Agency portal is an industry-leading technology tool. This portal is key to maintaining and growing your book and leads.
+
+websites:
+  - singular_title: Senior Market Advisors
+    plural_title: Senior Market Advisors
+    description: Click here for more information about how we support our agencies and agents.
+    url: https://seniormarketadvisors.com/
+    url_external: true
+    icon: icon-sma.png
+  - singular_title: Already have Portal Access?
+    plural_title: Already have Portal Access?
+    description: Your one stop shop to servicing your agency by managing and assigning leads to your agents, submitting quotes, communicating requests with your topline agency, and more!
+    url: https://myinsuranceagencyportal.force.com
+    url_external: true
+    icon: icon-have-access.png
+  - singular_title: Request Portal Access
+    plural_title: Request Portal Access
+    description: Click here to request Portal Access.
+    url: /support/
+    icon: icon-need-access.png
+    
+---
+
+{% block content %}
+  
+  {% set hero_title = "Agencies" %}
+  {% include "_includes/modules/internal-hero.njk" %}
+  
+  <div class="flex flex-col items-center px-6 pt-24 text-center">
+    
+    <div class="pb-4">
+      <h2 class="text-3xl font-bold mb-2">How can we serve you?</h2>
+    </div>
+    
+    <div class="info pb-12">
+      <p class="text-base">
+          Select the most relevant option below.
+      </p>
+    </div>
+  </div>
+  
+  <div class="container w-11/12 md:w-9/12 mx-auto pt-12 pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+      
+      {% for website in websites %}
+      
+        <div class="w-full shadow-lg border-8 border-360darkteal bg-360lightteal hover:bg-360darkteal transition duration-500 ease-in-out">
+          <a href="{{ website.url }}" class="card-href block h-full" {% if website.url_external %} target="_blank" rel="noopener noreferrer" {% endif %}>
+            <div class="card flex flex-col items-center px-6 py-4 text-white text-center">
+              
+                <div class="card-icon image w-16 h-16 rounded-full bg-360darkteal">
+                  <img src="/img/{{ website.icon }}" alt="{{ website.plural_title }}" class="p-3"/>
+                </div>
+                
+                <div class="info w-full pt-2">
+                  <h2 class="text-2xl font-bold mb-2">{{ website.plural_title }}</h2>
+                  <div class="info__lower relative transition-opacity w-full">
+                    <p class="info__text w-full text-base transition min-h-full h-24 lg:h-auto">
+                      {{ website.description }}
+                    </p>
+                    <div class="w-full absolute top-2">
+                      <div class="info__icon opacity-0 image w-16 h-16 mx-auto">
+                        <img src="/img/icon-arrow.png" alt="Go to {{ website.plural_title }}" class="p-2"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+          </a>
+        </div>
+        
+      {% endfor %}
+    </div>
+  </div>
+  
+{% endblock %}

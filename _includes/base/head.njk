@@ -1,0 +1,38 @@
+{# Contents everything for the page head #}
+
+<title>
+  {{ title }} | 360Now
+</title>
+<meta charset="UTF-8"/>
+{% if meta_description %}
+  <meta name="description" content="{{ meta_description }}"/>
+{% endif %}
+{% if noindex %}
+  {# Only fires if set in the FrontMatter. To enable add...
+      noindex: true 
+    To make sure a page is indexed, fully remove the noindex: true from page. Setting it to false won't work.
+  #}
+  <meta name="robots" content="noindex">
+{% endif %}
+<meta name="keywords" content="Medicare Agent, Medicare Sales, Medicare leads, Medicare Advantage, Sales Portal, Medicare Agent Tools, Medicare Tools">
+<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
+<link rel="stylesheet" href="/style.css?v={% version %}"/>
+{% block head %}{% endblock %}
+<script src="/js/alpine.js?v={% version %}"></script>
+
+{# Full version of all Inter typfaces #}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/inter-ui@3.15.0/inter.min.css"> 
+
+{# Sharing #}
+<meta property="og:title" content="{{ page.title }} | 360Now" />
+<meta property="og:type" content="website">
+<meta property="og:description" content="{{ meta_description }}" />
+<meta property="og:url" content="{{ site.url | url }}{{ page.url | url }}" />
+<meta property="og:image" content="{{ site.url | url }}/img/360now-share.jpg" />
+<meta property="og:site_name" content="360Now" />
+<meta property="og:locale" content="en_us">
+<meta name="twitter:card" content="summary_large_image">
+
+{# Favicon #}
+<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png"/>

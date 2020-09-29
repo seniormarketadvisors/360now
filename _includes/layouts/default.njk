@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  {% block head %}
+    <head>
+      {% include "_includes/base/head.njk" %}
+    </head>
+  {% endblock %}
+  
+  <body class="layout-{{ layout | slug }} page-{{ page.fileSlug }}">
+    
+    {% block header %}
+      {% include "_includes/base/header.njk" %}
+    {% endblock %}
+    
+    <main class="site-main w-full" role="main">
+      {% block content %}
+        {{ content | safe }}
+      {% endblock %}
+    </main>
+    
+    {% block footer %}
+      {% include "_includes/base/footer.njk" %}
+    {% endblock %}
+    
+    {% block footer_scripts %}
+      {% include "_includes/base/footer-scripts.njk" %}
+    {% endblock %}
+    
+  </body>
+</html>

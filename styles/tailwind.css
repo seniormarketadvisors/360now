@@ -1,0 +1,23 @@
+@tailwind base;
+
+body{
+    @apply text-black;
+}
+
+.hero{
+    background-image: url(img/home__hero--bg.png);
+}
+
+.card-href:hover .info__icon{
+    /* @apply block; */
+    @apply opacity-100;
+}
+
+.card-href:hover .info__text,
+.card-href:hover .card-icon {
+    @apply opacity-0;
+}
+
+
+@tailwind components;
+@tailwind utilities;
