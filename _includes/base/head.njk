@@ -7,6 +7,8 @@
 {% if meta_description %}
   <meta name="description" content="{{ meta_description }}"/>
 {% endif %}
+
+
 {% if noindex %}
   {# Only fires if set in the FrontMatter. To enable add...
       noindex: true 
@@ -14,9 +16,23 @@
   #}
   <meta name="robots" content="noindex">
 {% endif %}
+
 <meta name="keywords" content="Medicare Agent, Medicare Sales, Medicare leads, Medicare Advantage, Sales Portal, Medicare Agent Tools, Medicare Tools">
 <meta http-equiv="x-ua-compatible" content="ie=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
+
+{# GA only...may switch this all to Tag Manager if it makes more sense in the future #}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-179293763-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-179293763-1');
+</script>
+
+
 <link rel="stylesheet" href="/style.css?v={% version %}"/>
 {% block head %}{% endblock %}
 <script src="/js/alpine.js?v={% version %}"></script>
