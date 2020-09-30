@@ -1,0 +1,4 @@
+Sitemap: https://360now.org/sitemap.xml
+
+User-agent: *
+Disallow:
