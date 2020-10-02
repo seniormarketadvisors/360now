@@ -1,0 +1,121 @@
+---
+layout: default
+title: 360Now, an industry leading tech portal for agents/agencies.
+meta_description: The 360Now Agent and Agency portal is an industry-leading technology tool. This portal is key to maintaining and growing your book and leads.
+
+websites:
+  - singular_title: I'm an Agent
+    plural_title: Agent Portal
+    description: How can I support my customers?
+    url: /agents/
+    icon: icon-agent.png
+  - singular_title: I'm an Agency
+    plural_title: Agency Portal
+    description: As a Principal Agent, how can I manage my downline and business?
+    url: /agencies/
+    icon: icon-agency.png
+  - singular_title: I'm an Employee
+    plural_title: Employee Portal
+    description: Click here for your Salesforce login.
+    url: https://healthcareholdingsofamericanextgen.my.salesforce.com/
+    url_external: true
+    icon: icon-employee.png
+    
+footers:
+  - title: Benefits of 360Now
+    description: 360Now is your full view of all tools and resources to serve you.
+    icon: icon-benefits.png
+    url: /benefits/
+  - title: Questions
+    description: Do you have questions about 360Now? Click here to contact our support team and get answers!
+    icon: icon-questions.png
+    url: /support/
+---
+
+{% block content %}
+  
+  {% include "_includes/modules/home-hero.njk" %}
+  
+  <div class="container w-11/12 md:w-9/12 mx-auto pt-24 pb-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+      
+      {% for website in websites %}
+      
+        <div class="w-full shadow-lg border-8 border-360darkteal bg-360lightteal hover:bg-360darkteal transition duration-500 ease-in-out">
+          <a href="{{ website.url | url }}" class="card-href block h-full" {% if website.url_external %} target="_blank" rel="noopener noreferrer" {% endif %}>
+            <div class="card flex flex-col items-center px-6 py-4 text-white text-center">
+              
+                <div class="card-icon image w-16 h-16 rounded-full bg-360darkteal">
+                  <img src="img/{{ website.icon }}" alt="{{ website.plural_title }}" class=""/>
+                </div>
+                
+                <div class="info w-full pt-2">
+                  <h2 class="text-2xl font-bold mb-2">{{ website.singular_title }}</h2>
+                  <div class="info__lower relative transition-opacity w-full">
+                    <p class="info__text w-full text-base transition h-24">
+                      {{ website.description }}
+                    </p>
+                    <div class="w-full absolute top-2">
+                      <div class="info__icon opacity-0 image w-16 h-16 mx-auto">
+                        <img src="img/icon-arrow.png" alt="Go to {{ website.plural_title }}" class="p-2"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+          </a>
+        </div>
+        
+      {% endfor %}
+    </div>
+  </div>
+  <div class="container w-11/12 md:w-9/12 mx-auto pt-6 pb-24">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
+      
+      {% for footer in footers %}
+      
+        <div class="max-w-m overflow-hidden shadow-lg border-8 border-360darkteal bg-360lightteal  transition duration-500 ease-in-out {% if footer.url %}hover:bg-360darkteal{% endif %}">
+          
+          {# Only create a link if there is one #}
+          {% if footer.url %}
+            <a href="{{ footer.url | url }}" class="card-href block h-full">
+          {% endif %}
+          
+            <div class="card flex flex-row px-6 py-4 text-white text-center">
+              
+              <div class="card-icon image flex justify-center w-1/4">
+                <img src="img/{{footer.icon}}" alt="{{ footer.title }}" class="w-16 h-16 rounded-full bg-360darkteal"/>
+              </div>
+              
+              <div class="info w-3/4 text-left pl-4">
+                <h2 class="text-2xl font-bold mb-2">{{ footer.title }}</h2>
+                <div class="info__lower relative transition-opacity w-full h-24">
+                  <p class="info__text w-full text-base transition">
+                    {{ footer.description }}
+                  </p>
+                  
+                  {% if footer.url %}
+                    <div class="w-full absolute top-2 left-0">
+                      <div class="info__icon opacity-0 image w-16 h-16">
+                        <img src="img/icon-arrow.png" alt="Go to {{ website.plural_title }}" class="p-2"/>
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                </div>
+              </div>
+              
+            </div>
+          
+          {# Only close link if there was one #}  
+          {% if footer.url %}
+            </a>
+          {% endif %}
+        
+        </div>
+        
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
