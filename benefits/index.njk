@@ -11,8 +11,8 @@ benefits:
     description: Your one stop shop to servicing your agency by managing and assigning leads to your agents, submitting quotes, communicating requests with your topline agency, and more!
     url: https://myinsuranceagencyportal.force.com/
   - title: Agent Portal
-    description: <strong>Portal Access is Coming Soon!</strong>
-    url: 
+    description: Nurture your lead assignments, quote and enroll your customers, and more!
+    url: https://myinsuranceagentportal.com/
   - title: Employee Portal
     description: Click here for your Salesforce login
     url: https://healthcareholdingsofamericanextgen.my.salesforce.com/
@@ -33,7 +33,7 @@ benefits:
           
           {# Only create a link if there is one #}
           {% if benefit.url %}
-            <a href="{{ benefit.url }}" class="">
+            <a href="{{ benefit.url }}" class="" target="_blank" rel="noopener noreferrer">
           {% endif %}
           
             <div class="card flex flex-row items-stretch px-6 py-4 text-white text-center">
