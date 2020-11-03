@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 360Now Support - Learn how to use this leading technology.
-meta_description: Looking for more information on how to use 360Now? Want to learn more about the benefits of this technology? We’re here to help you grow and succeed. 
+meta_description: Looking for more information on how to use 360Now? Want to learn more about the benefits of this technology? We’re here to help you grow and succeed.
 
 ---
 {# Use the default block head and add the extras required for Salesforce forms #}
@@ -13,7 +13,7 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
     <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
-     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
+     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -40,33 +40,15 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
                 We are here to serve you. Fill this form out and we will be in touch soon.
             </p>
           </div>
-          
-          <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md mb-32" role="alert">
-            <div class="flex">
-              <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-              <div>
-                <p class="font-bold text-left">Support Form</p>
-                <p class="text-sm text-left">Our support form is still in progress and will be added in the near future.</p>
-              </div>
-            </div>
-          </div>
-          
-          {# <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" class="w-full max-w-lg">
+
+          <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" class="w-full max-w-lg">
             
             <div class="flex flex-wrap -mx-3 mb-6">
               <div class="w-full">
-                <input type=hidden name='captcha_settings' value='{"keyname":"APIKey360Now","fallback":"true","orgId":"00D4C0000000vIY","ts":""}'>
+                <input type=hidden name='captcha_settings' value='{"keyname":"APIKey360Now","fallback":"true","orgId":"00D5w000006VdIF","ts":""}'>
                 <input type=hidden name="orgid" value="00D5w000006VdIF">
                 <input type=hidden name="retURL" value="https://360now.org/support/success/">
                 <input type=hidden name="recordType" id="recordType" value="0125w000000myma">
-
-                <!--  ----------------------------------------------------------------------  -->
-                <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
-                <!--  these lines if you wish to test in debug mode.                          -->
-                <!--  <input type="hidden" name="debug" value=1>                              -->
-                <!--  <input type="hidden" name="debugEmail"                                  -->
-                <!--  value="dmbanya@seniormarketadvisors.com">                               -->
-                <!--  ----------------------------------------------------------------------  -->
               </div>
             </div>
             
@@ -117,14 +99,15 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
               </div>
             </div>
             <div class="flex flex-wrap justify-center -mx-3 mb-6">
-              <div class="g-recaptcha" data-sitekey="6LckqsoZAAAAAHjr06I3qs2S6htDr2zZgYgPCDJj"></div>
+              {# Recaptcha has to have the callback manually added. SF doesn't automatically validate the recaptcha which is crazy #}
+              <div class="g-recaptcha" data-sitekey="6LckqsoZAAAAAHjr06I3qs2S6htDr2zZgYgPCDJj" data-callback="recaptchaCallback"></div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
               <div class="w-full px-3">
-                <input type="submit" name="submit" class="cursor-pointer text-m px-6 py-2 leading-none border-2 rounded text-white bg-360lightteal border-360lightteal hover:border-360darkteal hover:text-white hover:bg-360lightteal">
+                <input type="submit" name="submit" class="cursor-pointer text-m px-6 py-2 leading-none border-2 rounded text-white bg-360lightteal border-360lightteal hover:border-360darkteal hover:text-white hover:bg-360lightteal" id="submitBtn" disabled>
               </div>
             </div>
-          </form> #}
+          </form>
         </div>
         
     </div>
@@ -133,12 +116,19 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
 {% endblock %}
 
 <script>
-  $('#phone')
 
+  {# Make sure the recaptcha worked #}
+  function recaptchaCallback() {
+    $('#submitBtn').removeAttr('disabled');
+  };
+  
+  {# Form validation #}
+  $('#phone')
+  
   .keydown(function (e) {
     var key = e.which || e.charCode || e.keyCode || 0;
     $phone = $(this);
-
+  
     // Don't let them remove the starting '('
     if ($phone.val().length === 1 && (key === 8 || key === 46)) {
       $phone.val('('); 
@@ -148,7 +138,7 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
     else if ($phone.val().charAt(0) !== '(') {
       $phone.val('('+String.fromCharCode(e.keyCode)+''); 
     }
-
+  
     // Auto-format- do not expose the mask as the user begins to type
     if (key !== 8 && key !== 9) {
       if ($phone.val().length === 4) {
@@ -161,7 +151,7 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
         $phone.val($phone.val() + '-');
       }
     }
-
+  
     // Allow numeric (and tab, backspace, delete) keys only
     return (key == 8 || 
         key == 9 ||
@@ -169,10 +159,10 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
         (key >= 48 && key <= 57) ||
         (key >= 96 && key <= 105));	
   })
-
+  
   .bind('focus click', function () {
     $phone = $(this);
-    
+  
     if ($phone.val().length === 0) {
       $phone.val('(');
     }
@@ -181,10 +171,10 @@ meta_description: Looking for more information on how to use 360Now? Want to lea
       $phone.val('').val(val); // Ensure cursor remains at the end
     }
   })
-
+  
   .blur(function () {
     $phone = $(this);
-    
+  
     if ($phone.val() === '(') {
       $phone.val('');
     }
