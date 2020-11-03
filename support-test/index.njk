@@ -16,6 +16,18 @@ eleventyExcludeFromCollections: true {# makes sure it won't show up in sitemap.x
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
      function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+     if(grecaptcha && grecaptcha.getResponse().length > 0)
+     {
+          //the recaptcha is checked
+          // Do what you want here
+          alert('Well, recaptcha is checked !');
+     }
+     else
+     {
+         //The recaptcha is not cheched
+         //You can display an error message here
+         alert('Oops, you have to check the recaptcha !');
+     }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -159,18 +171,7 @@ eleventyExcludeFromCollections: true {# makes sure it won't show up in sitemap.x
 {% endblock %}
 
 <script>
-  if(grecaptcha && grecaptcha.getResponse().length > 0)
-  {
-       //the recaptcha is checked
-       // Do what you want here
-       alert('Well, recaptcha is checked !');
-  }
-  else
-  {
-      //The recaptcha is not cheched
-      //You can display an error message here
-      alert('Oops, you have to check the recaptcha !');
-  }
+  
   // $('#phone')
   // 
   // .keydown(function (e) {
