@@ -21,3 +21,17 @@ body{
 
 @tailwind components;
 @tailwind utilities;
+
+/* Disabled button styles */
+button[disabled]:active, button[disabled],
+input[type="button"][disabled]:active,
+input[type="button"][disabled],
+input[type="submit"][disabled]:active,
+input[type="submit"][disabled],
+button[disabled]:hover,
+input[type="button"][disabled]:hover,
+input[type="submit"][disabled]:hover {
+    @apply bg-gray-400;
+    @apply border-none;
+    @apply cursor-not-allowed;
+}
