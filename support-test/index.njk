@@ -159,6 +159,18 @@ eleventyExcludeFromCollections: true {# makes sure it won't show up in sitemap.x
 {% endblock %}
 
 <script>
+  if(grecaptcha && grecaptcha.getResponse().length > 0)
+  {
+       //the recaptcha is checked
+       // Do what you want here
+       alert('Well, recaptcha is checked !');
+  }
+  else
+  {
+      //The recaptcha is not cheched
+      //You can display an error message here
+      alert('Oops, you have to check the recaptcha !');
+  }
   // $('#phone')
   // 
   // .keydown(function (e) {
