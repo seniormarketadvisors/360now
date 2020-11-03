@@ -16,18 +16,6 @@ eleventyExcludeFromCollections: true {# makes sure it won't show up in sitemap.x
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
      function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
-     if(grecaptcha && grecaptcha.getResponse().length > 0)
-     {
-          //the recaptcha is checked
-          // Do what you want here
-          alert('Well, recaptcha is checked !');
-     }
-     else
-     {
-         //The recaptcha is not cheched
-         //You can display an error message here
-         alert('Oops, you have to check the recaptcha !');
-     }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -82,8 +70,8 @@ eleventyExcludeFromCollections: true {# makes sure it won't show up in sitemap.x
 
             <label for="description">Description</label><textarea name="description"></textarea><br>
 
-            <div class="g-recaptcha" data-sitekey="6LckqsoZAAAAAHjr06I3qs2S6htDr2zZgYgPCDJj"></div><br>
-            <input type="submit" name="submit">
+            <div class="g-recaptcha" data-sitekey="6LckqsoZAAAAAHjr06I3qs2S6htDr2zZgYgPCDJj" data-callback="recaptchaCallback"></div><br>
+            <input type="submit" name="submit" disabled>
 
           </form>
 
@@ -171,7 +159,9 @@ eleventyExcludeFromCollections: true {# makes sure it won't show up in sitemap.x
 {% endblock %}
 
 <script>
-  
+  function recaptchaCallback() {
+    $('#submitBtn').removeAttr('disabled');
+  };
   // $('#phone')
   // 
   // .keydown(function (e) {
