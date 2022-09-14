@@ -8,8 +8,21 @@
   {% endblock %}
   
   <body class="layout-{{ layout | slug }} page-{{ page.fileSlug }}">
-    
-    {% block header %}
+
+    {# 
+    DEV Note:
+    This adds an overlay while site is under construction.
+    Comment the next line out to remove it.
+    #}
+    {% include "_includes/modules/under-contruction-overlay.njk" %}
+
+
+    {# 
+    DEV Note:
+    Uncomment the rest of these block below to enable original site after
+    commenting out the overlay include above
+    #}
+    {# {% block header %}
       {% include "_includes/base/header.njk" %}
     {% endblock %}
     
@@ -25,7 +38,7 @@
     
     {% block footer_scripts %}
       {% include "_includes/base/footer-scripts.njk" %}
-    {% endblock %}
+    {% endblock %} #}
     
   </body>
 </html>
