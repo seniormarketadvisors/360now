@@ -38,6 +38,9 @@ npm run build
 npm run start
 ```
 
+## Deploy
+This repo is connected to Netlify. All changes merged or committed to `master` will trigger an automated re-deploy.
+
 ## Author
 
 [Greg Wolanski](https://gregwolanski.com)
